@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-for i in range(26):
-    print(f"{ord('a') + i:c}", end="")
+for i in range(ord('a'), ord('z') + 1):
+	print(f"{i:c}", end="")
