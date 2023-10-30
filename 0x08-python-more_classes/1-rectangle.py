@@ -6,8 +6,8 @@ class Rectangle:
     """Defines a new rectangle"""
 
     def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
+        width = width
+        height = height
 
     @property
     def width(self):
