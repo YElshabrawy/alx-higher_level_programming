@@ -38,3 +38,19 @@ class Base:
 
         with open("{}.json".format(cls.__name__), 'w') as f:
             f.write(cls.to_json_string(list_objs))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """from dict to obj"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+
+        if cls is Rectangle:
+            obj = Rectangle(1, 1)
+        elif cls is Square:
+            obj = Square(1)
+        else:
+            obj = None
+
+        obj.update(**dictionary)
+        return obj
