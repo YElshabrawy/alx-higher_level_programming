@@ -6,6 +6,13 @@ from models.base import Base
 class Rectangle(Base):
     """ rect class """
 
+    def __init__(self, width, height, x=0, y=0, id=None):
+        super().__init__(id)
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+
     @property
     def width(self):
         return self.__width
@@ -56,9 +63,5 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = val
 
-    def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+    def area(self):
+        return self.width * self.height
