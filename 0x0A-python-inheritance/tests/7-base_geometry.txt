@@ -1,0 +1,22 @@
+Import function from module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Correct Class Type test:
+    >>> bg = BaseGeometry()
+    >>> type(bg) == BaseGeometry
+    True
+
+integer_validator method list value:
+    >>> bg.integer_validator("a", [1])
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+integer_validator method None value:
+    >>> bg.integer_validator("foo", None)
+    Traceback (most recent call last):
+    TypeError: foo must be an integer
+
+integer_validator method 0 value:
+    >>> bg.integer_validator("key", 0)
+    Traceback (most recent call last):
+    ValueError: key must be greater than 0
