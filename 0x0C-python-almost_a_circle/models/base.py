@@ -48,7 +48,8 @@ class Base:
 
         if list_objs is not None:
             if cls is Rectangle:
-                list_objs = [[o.id, o.width, o.height, o.x, o.y] for o in list_objs]
+                list_objs = \
+                    [[o.id, o.width, o.height, o.x, o.y] for o in list_objs]
             else:
                 list_objs = [[o.id, o.size, o.x, o.y] for o in list_objs]
         with open("{}.csv".format(cls.__name__), 'w', newline="") as f:
@@ -94,9 +95,11 @@ class Base:
                 for row in csvReader:
                     row = [int(c) for c in row]
                     if len(row) == 5:
-                        d = {"id": row[0], "width": row[1], "height": row[2], "x": row[3], "y": row[4]}
+                        d = {"id": row[0], "width": row[1],
+                             "height": row[2], "x": row[3], "y": row[4]}
                     else:
-                        d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                        d = {"id": row[0], "size": row[1],
+                             "x": row[2], "y": row[3]}
                     output.append(cls.create(**d))
                 return output
         except FileNotFoundError:
