@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ base class """
 import json
+import csv
 
 
 class Base:
@@ -40,6 +41,21 @@ class Base:
             f.write(cls.to_json_string(list_objs))
 
     @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the CSV string to file"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+
+        if list_objs is not None:
+            if cls is Rectangle:
+                list_objs = [[o.id, o.width, o.height, o.x, o.y] for o in list_objs]
+            else:
+                list_objs = [[o.id, o.size, o.x, o.y] for o in list_objs]
+        with open("{}.csv".format(cls.__name__), 'w', newline="") as f:
+            csvWritter = csv.writer(f)
+            csvWritter.writerows(list_objs)
+
+    @classmethod
     def create(cls, **dictionary):
         """from dict to obj"""
         from models.rectangle import Rectangle
@@ -64,6 +80,24 @@ class Base:
                 output = []
                 for itm in content:
                     output.append(cls.create(**itm))
+                return output
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads from csv"""
+        try:
+            with open("{}.csv".format(cls.__name__), 'r', newline="") as f:
+                csvReader = csv.reader(f)
+                output = []
+                for row in csvReader:
+                    row = [int(c) for c in row]
+                    if len(row) == 5:
+                        d = {"id": row[0], "width": row[1], "height": row[2], "x": row[3], "y": row[4]}
+                    else:
+                        d = {"id": row[0], "size": row[1], "x": row[2], "y": row[3]}
+                    output.append(cls.create(**d))
                 return output
         except FileNotFoundError:
             return []
