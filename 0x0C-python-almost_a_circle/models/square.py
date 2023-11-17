@@ -46,7 +46,7 @@ class Square(Rectangle):
         """return sq of rect"""
         d = dict()
         d['id'] = self.id
-        d['size'] = self.width
+        d['size'] = self.size
         d['x'] = self.x
         d['y'] = self.y
         return d
