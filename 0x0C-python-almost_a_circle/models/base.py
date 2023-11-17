@@ -27,7 +27,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """from json to dict"""
-        if json_string is None:
+        if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
 
