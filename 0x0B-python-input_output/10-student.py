@@ -12,7 +12,7 @@ class Student:
     def to_json(self, attrs=None):
         '''return json'''
         attr_dict = self.__dict__
-        if type(attrs) is None:
+        if attrs is None:
             return attr_dict
 
         out = {}
