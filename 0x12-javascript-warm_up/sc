@@ -1,0 +1,10 @@
+#!/bin/bash
+for file in ./*.js; do
+    if [ -s "$file" ]; then
+        # File is not empty, skip
+        continue
+    fi
+
+    # Add #!/usr/bin/node to empty .js files
+    echo "#!/usr/bin/node" > "$file"
+done
