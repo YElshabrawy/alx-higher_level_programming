@@ -1,9 +1,6 @@
 #!/usr/bin/node
-let c = 0;
-process.argv.shift();
-process.argv.shift();
-process.argv.forEach((arg) => {
-  console.log(arg);
-  c++;
-});
-if (c === 0) console.log('No argument');
+if (!process.argv[2]) {
+  console.log('No argument');
+} else {
+  console.log(process.argv[2]);
+}
