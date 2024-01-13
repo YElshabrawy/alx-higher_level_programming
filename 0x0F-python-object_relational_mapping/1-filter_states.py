@@ -10,9 +10,10 @@ if __name__ == "__main__":
     db = MySQLdb.connect(password=dbPass, database=dbName,
                          user=dbUser, host='localhost', port=3306)
     c = db.cursor()
-    c.execute("SELECT * FROM states WHERE name LIKE \"N%\" ORDER BY id")
+    c.execute("SELECT * FROM states ORDER BY id")
     rows = c.fetchall()
     for row in rows:
-        print(row)
+        if row[1][0] == "N":
+            print(row)
     c.close()
     db.close()
