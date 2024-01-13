@@ -7,7 +7,8 @@ dbUser = argv[1]
 dbPass = argv[2]
 dbName = argv[3]
 
-db = MySQLdb.connect(password=dbPass, database=dbName, user=dbUser, host='localhost', port=3306)
+db = MySQLdb.connect(password=dbPass, database=dbName,
+                     user=dbUser, host='localhost', port=3306)
 c = db.cursor()
 c.execute("SELECT * from states ORDER BY id")
 rows = c.fetchall()
