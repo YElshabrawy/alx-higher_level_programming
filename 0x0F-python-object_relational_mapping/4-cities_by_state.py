@@ -13,7 +13,7 @@ if __name__ == "__main__":
     c.execute('''SELECT cities.id, cities.name, states.name
               FROM states
               JOIN cities ON cities.state_id = states.id
-              ORDER BY id''')
+              ORDER BY cities.id''')
     rows = c.fetchall()
     for row in rows:
         print(row)
