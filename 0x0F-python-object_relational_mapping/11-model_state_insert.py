@@ -17,4 +17,5 @@ if __name__ == "__main__":
     newItm.name = "Louisiana"
     c = s.add(newItm)
     s.commit()
+    print(newItm.id)
     s.close()
