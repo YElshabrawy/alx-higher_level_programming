@@ -14,8 +14,7 @@ if __name__ == "__main__":
     engine = create_engine(dbURL)
     Session = sessionmaker(engine)
     s = Session()
-    c = s.query(State).filter(State.name == stateName) \
-        .order_by(State.id).count()
-    print(c if c > 0 else "Not found")
+    c = s.query(State).filter(State.name == stateName).all()
+    print(c[0].id if c else "Not found")
     s.commit()
     s.close()
