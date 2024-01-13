@@ -13,10 +13,8 @@ if __name__ == "__main__":
     engine = create_engine(dbURL)
     Session = sessionmaker(engine)
     s = Session()
-    states = s.query(State) \
-        .filter(State.name.contains('a')) \
-            .order_by(State.id) \
-                .all()
+    states = s.query(State).filter(State.name.contains('a')) \
+        .order_by(State.id).all()
     for state in states:
         print(f"{state.id}: {state.name}")
     s.commit()
