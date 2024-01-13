@@ -9,7 +9,8 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     dbUser, dbPass, dbName = argv[1], argv[2], argv[3]
 
-    dbURL = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(dbUser, dbPass, dbName)
+    dbURL = "mysql+mysqldb://{}:{}@localhost:3306/{}" \
+        .format(dbUser, dbPass, dbName)
     engine = create_engine(dbURL, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     s = Session()
