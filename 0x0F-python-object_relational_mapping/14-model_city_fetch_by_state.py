@@ -13,7 +13,8 @@ if __name__ == "__main__":
     engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
                            .format(db_user, db_pass, db_name))
     s = sessionmaker()(bind=engine)
-    rows: List[Tuple[City, State]] = s.query(City, State).join(State).order_by(City.id)
+    rows: List[Tuple[City, State]] = s.query(City, State)\
+        .join(State).order_by(City.id)
     for city, state in rows:
         print(f"{state.name}: ({city.id}) {city.name}")
     s.close()
