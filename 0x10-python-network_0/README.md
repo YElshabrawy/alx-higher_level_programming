@@ -9,6 +9,7 @@
 - `curl -L` is used to instruct the curl command to follow HTTP redirects automatically. (lw fyh 301 yredirect automatic w yro7 ll new location)
 - `curl -X` used to specify the HTTP request method (e.g., GET, POST, PUT) when making a request with curl.
 - `curl -H` is used to include HTTP headers in a key-value string "key: value"
+- `curl -d` is used to send data in the body of a POST request in a key=value string "key=value"
 
 ## `awk` notes:
 - `awk '{print $2}'` is an awk command that extracts and prints the second field (column) from each line of input, based on the default field separator (whitespace).
