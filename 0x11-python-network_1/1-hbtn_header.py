@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''m'''
-from ast import arg
 import urllib.request as ur
 from sys import argv
 
