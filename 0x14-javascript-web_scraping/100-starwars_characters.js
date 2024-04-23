@@ -7,18 +7,22 @@ request.get(url, (err, res, body) => {
     console.log(err);
   } else {
     const characters = JSON.parse(body).characters;
-    const promises = characters.map(character => new Promise((resolve, reject) => {
-      request.get(character, (err, res, body) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(JSON.parse(body).name);
-        }
-      });
-    }));
-    Promise.all(promises).then(characters => {
-      characters.forEach(character => console.log(character));
-    }).catch(err => console.log(err));
+    const promises = characters.map(
+      (character) =>
+        new Promise((resolve, reject) => {
+          request.get(character, (err, res, body) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(JSON.parse(body).name);
+            }
+          });
+        })
+    );
+    Promise.all(promises)
+      .then((characters) => {
+        characters.forEach((character) => console.log(character));
+      })
+      .catch((err) => console.log(err));
   }
-}
-);
+});
