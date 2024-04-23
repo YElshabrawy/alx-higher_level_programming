@@ -9,12 +9,10 @@ request(url, (err, res) => {
   }
   const output = {};
   const data = JSON.parse(res.body);
-  data.forEach(el => {
-    if (!output[el.userId]) {
-      output[el.userId] = 0;
-    }
-    if (el.completed) {
-      output[el.userId]++;
+  data.map(todo => {
+    if (todo.completed) {
+      output[todo.userId] = (output[todo.userId] || 0) + 1;
+      return output;
     }
   });
   console.log(output);
