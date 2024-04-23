@@ -1,19 +1,16 @@
 #!/usr/bin/node
 const request = require('request');
-const url = process.argv[2];
 
-request(url, (err, res) => {
+const url = process.argv[2];
+request.get(url, (err, res, body) => {
   if (err) {
     console.log(err);
-    return;
+  } else {
+    const obj = {};
+    JSON.parse(body).map(todo => {
+      if (todo.completed) obj[todo.userId] = (obj[todo.userId] || 0) + 1;
+      return obj;
+    });
+    console.log(obj);
   }
-  const output = {};
-  const data = JSON.parse(res.body);
-  data.map(todo => {
-    if (todo.completed) {
-      output[todo.userId] = (output[todo.userId] || 0) + 1;
-      return output;
-    }
-  });
-  console.log(output);
 });
